@@ -1,0 +1,23 @@
+<div *ngIf="!list">
+  <span #loading>
+    <ng-content select="[loading]"></ng-content>
+  </span>
+  <!-- <span *ngIf="!loading.innerHTML.trim()">
+    <img src="https://i.gifer.com/VM3x.gif" />
+  </span> -->
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="list?.length === 0">
+  <span #empty>
+    <ng-content select="[empty]"></ng-content>
+  </span>
+  <span *ngIf="!empty.innerHTML.trim()">
+    Empty array
+  </span>
+</div>
+
+<ng-container *ngIf="list && list.length >0">
+  <!-- ng-container działa jak div, ale nie wyświetla go w źródle i nie wpływa na css i layout-->
+  <ng-content select="[content]"></ng-content>
+</ng-container>
